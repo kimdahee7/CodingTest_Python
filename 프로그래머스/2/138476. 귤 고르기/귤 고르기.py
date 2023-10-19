@@ -1,4 +1,3 @@
-from itertools import combinations
 def solution(k, tangerine):
     answer = 0
     box_dic = {}
