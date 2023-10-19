@@ -5,6 +5,7 @@ def solution(n, computers):
         for j in range(len(computers[i])):
             if computers[i][j] == 1:
                 graph[i].append(j)
+                graph[j].append(i)
     visited = [False] * (n)
     for i in range(n):
         if visited[i] == False:
