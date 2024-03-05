@@ -1,9 +1,4 @@
 def solution(wallpaper):
-    answer = []
-    lux = 0
-    luy = 0
-    rdx = 0
-    rdy = 0
     l_y = []
     l_x = []
     M = len(wallpaper[0])
@@ -13,9 +8,4 @@ def solution(wallpaper):
             if wallpaper[i][j] == "#":
                 l_y.append(j)
                 l_x.append(i)
-    luy = min(l_y)
-    rdy = max(l_y)+1
-    lux = min(l_x)
-    rdx = max(l_x)+1
-    answer = [lux,luy,rdx,rdy]
-    return answer
+    return [min(l_x),min(l_y),max(l_x)+1,max(l_y)+1]
