@@ -3,7 +3,6 @@ def solution(operations):
     answer = []
     l = []
     for i in operations:
-        print(l)
         a,b = i.split()
         if a == "I":
             heapq.heappush(l,int(b))
