@@ -1,6 +1,9 @@
 def solution(nums):
     answer = 0
-    N = len(nums)//2
-    l = (set(nums))
-    answer = min(len(l),N)
+    n = len(nums)//2
+    l = set(nums)
+    if len(l) >= n:
+        answer = n
+    else:
+        answer = len(l)
     return answer
