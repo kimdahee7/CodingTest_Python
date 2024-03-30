@@ -1,25 +1,23 @@
 def solution(genres, plays):
     answer = []
-    g_dic = {}
-    p_dic = []
-    for i in range(len(genres)):
-        if genres[i] in g_dic:
-            g_dic[genres[i]] += plays[i]
+    n = len(genres)
+    l = {}
+    g = {}
+    for i in range(n):
+        if genres[i] not in g:
+            g[genres[i]] = plays[i]
         else:
-            g_dic[genres[i]] = plays[i]
-    g_dic = sorted(g_dic,key=lambda x:g_dic[x],reverse=True)
-    for i, val in enumerate(plays): 
-        p_dic.append([val,i])
-    p_dic = sorted(p_dic,key=lambda x:(-x[0],x[1]))
-    for i in g_dic:
-        result = []
+            g[genres[i]] += plays[i]
+    g = sorted(g,key=lambda x:g[x], reverse=True)
+    for i in range(n):
+        l[i] = plays[i]
+    l = dict(sorted(l.items(),key=lambda x:x[1], reverse=True))
+    for i in g:
         c = 0
-        for k in p_dic:
-            if genres[k[1]] == i:
-                c+=1
-                if c>2:
-                    break
-                else:
-                    result.append(k[1])
-        answer += result
+        for j in l:
+            if c == 2:
+                break
+            elif i == genres[j]:
+                c +=1
+                answer.append(j)    
     return answer
