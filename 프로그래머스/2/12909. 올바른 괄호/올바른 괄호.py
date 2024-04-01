@@ -1,16 +1,12 @@
 def solution(s):
     answer = True
-    l = []
+    stack = []
     for i in s:
-        if i == ")":
-            if len(l) !=0:
-                l.pop(len(l)-1)
-            else:
-                l.append(i)
+        if i == ")" and len(stack) != 0 and stack[-1] == "(":
+            stack.pop()
         else:
-            l.append(i)
-    if len(l) == 0:
-        answer = True
+            stack.append(i)
+    if len(stack) == 0:
+        return True
     else:
-        answer = False
-    return answer
+        return False
