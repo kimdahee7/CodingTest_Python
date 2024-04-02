@@ -1,22 +1,20 @@
 def solution(progresses, speeds):
     answer = []
-    result = []
-    day = 0
+    l = []
     for i in range(len(progresses)):
-        if (100-progresses[i])%speeds[i] == 0:
-            day = (100-progresses[i])//speeds[i]
-            result.append(day)
+        k = (100-progresses[i]) // speeds[i]
+        if (100-progresses[i]) % speeds[i] == 0:
+            l.append(k)
         else:
-            day = (100-progresses[i])//speeds[i] +1
-            result.append(day)
-    start = result[0]
-    total = 0
-    for i in result:
-        if i <= start:
-            total +=1
+            l.append(k+1)
+    start = l[0]
+    count = 1
+    for i in range(1,len(l)):
+        if l[i] <= start:
+            count +=1
         else:
-            answer.append(total)
-            start = i
-            total = 1
-    answer.append(total)
+            answer.append(count)
+            count = 1
+            start = l[i]
+    answer.append(count)
     return answer
