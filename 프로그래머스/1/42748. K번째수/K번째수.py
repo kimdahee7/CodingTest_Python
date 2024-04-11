@@ -1,7 +1,7 @@
 def solution(array, commands):
-    result = []
+    answer = []
     for i in commands:
-        list = array[i[0]-1:i[1]]
-        list.sort()
-        result.append(list[i[2]-1])
-    return result
+        l = array[i[0]-1:i[1]]
+        l.sort()
+        answer.append(l[i[2]-1])
+    return answer
