@@ -1,25 +1,20 @@
 import heapq
 def solution(operations):
-    answer = []
-    l = []
+    l1 = []
     for i in operations:
-        a,b = i.split()
-        if a == "I":
-            heapq.heappush(l,int(b))
-        elif a == "D" and b == "-1":
-            if len(l) != 0:
-                heapq.heappop(l)
+        if i[0] == "I":
+            heapq.heappush(l1,int(i[2:len(i)]))
+        elif len(l1) == 0:
+             continue
+        elif i == "D -1":
+            heapq.heappop(l1)
         else:
-            if len(l) == 1:
-                heapq.heappop(l)
-            else:
-                l2 = []
-                while len(l) > 1:
-                    x = heapq.heappop(l)
-                    heapq.heappush(l2,x)
-                l = l2
-    if len(l) == 0:
-        answer = [0,0]
+            l2 = []
+            while len(l1) > 1:
+                heapq.heappush(l2,heapq.heappop(l1))
+            heapq.heappop(l1)
+            l1 = l2
+    if len(l1) == 0:
+        return [0,0]
     else:
-        answer = [max(l),min(l)]
-    return answer
+        return [max(l1),min(l1)]
