@@ -6,5 +6,5 @@ for _ in range(N):
     dic[n] += 1
   else:
     dic[n] = 1
-dic = dict(sorted(dic.items(), key=lambda x:(x[1],-x[0]), reverse=True))
-print(list(dic.keys())[0])
+dic = sorted(dic.items(), key=lambda x:(-x[1],x[0]))
+print(dic[0][0])
