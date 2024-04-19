@@ -1,13 +1,9 @@
 def solution(sizes):
     answer = 0
-    b = set()
-    s = set()
+    l1 = []
+    l2 = []
     for i in sizes:
-        if i[0] >= i[1]:
-            b.add(i[0])
-            s.add(i[1])
-        else:
-            b.add(i[1])
-            s.add(i[0])
-    answer = max(b)*max(s) 
+        l1.append(max(i))
+        l2.append(min(i))
+    answer = max(l1) * max(l2)
     return answer
