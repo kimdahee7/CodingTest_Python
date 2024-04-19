@@ -4,7 +4,8 @@ graph = [list(map(int,input().split())) for _ in range(N)]
 for k in range(N):
   for i in range(N):
     for j in range(N):
-      graph[i][j] = min(graph[i][j],graph[i][k]+graph[k][j])
+      if graph[i][j] > graph[i][k]+graph[k][j]:
+        graph[i][j] = graph[i][k]+graph[k][j]
 
 for _ in range(M):
   A,B,C = map(int,input().split())
