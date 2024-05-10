@@ -1,24 +1,25 @@
 import heapq
+
 N = int(input())
 M = int(input())
+bus = [[] for _ in range(N+1)]
 INF = 1e9
-graph = [[] for _ in range(N+1)]
-dist = [INF for _ in range(N+1)]
-for i in range(M):
-  a,b,c = map(int,input().split())
-  graph[a].append((b,c))
-start,end = map(int,input().split())
+dist = [INF] * (N+1)
 
-q = []
-heapq.heappush(q,(0,start))
-dist[start] = 0
-while q:
-  d,now = heapq.heappop(q)
-  if dist[now] < d:
-    continue
-  for i in graph[now]:
-    if dist[i[0]] > d + i[1]:
-      dist[i[0]] = d + i[1]
-      heapq.heappush(q,(d+i[1],i[0]))
+for _ in range(M):
+    a,b,c = map(int,input().split())
+    bus[a].append((b,c))
+start, end = map(int,input().split())
 
+h = []
+heapq.heappush(h,(0,start))
+while h:
+    c, now = heapq.heappop(h)
+    if dist[now] < c:
+        continue
+    for i in bus[now]:
+        cost = c + i[1]
+        if cost < dist[i[0]]:
+            dist[i[0]] = cost
+            heapq.heappush(h,(cost,i[0]))
 print(dist[end])
