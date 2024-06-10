@@ -10,9 +10,10 @@ def binary(X,Y):
     mid = (start + end)//2
     k = (Y+mid)* 100 // (X+mid)
     if k > Z:
+      answer = mid
       end = mid - 1
     else:
       start = mid + 1
-  print(start)
+  print(answer)
 
 binary(X,Y)
