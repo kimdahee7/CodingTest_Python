@@ -1,28 +1,25 @@
 import sys
 input = sys.stdin.readline
-def main():
-  l = []
-  num = []
-  r = []
-  n, k = map(int,input().split())
-  for _ in range(n):
-    s = list(map(int,input().split()))
-    l.append(s)
-  l.sort(key = lambda l:l[3], reverse=True)
-  l.sort(key = lambda l:l[2], reverse=True)
-  l.sort(key = lambda l:l[1], reverse=True)
-  for i in l:
-    num.append(i[0])
-    i.remove(i[0])
-  pre = l[0]
-  rate = 1
-  for j in l:
-    if j == pre:
-      r.append(rate)
+N,K = map(int,input().split())
+l = [list(map(int,input().split())) for _ in range(N)]
+l.sort(key=lambda x:-x[3])
+l.sort(key=lambda x:-x[2])
+l.sort(key=lambda x:-x[1])
+answer_list = [(l[0][0],1)]
+answer = 1
+g = l[0][1]
+s = l[0][2]
+b = l[0][3]
+for i in range(1,N):
+    if l[i][1] == g and l[i][2] == s and l[i][3] == b:
+        answer_list.append((l[i][0],answer))
     else:
-      rate +=1
-      pre = j
-      r.append(rate)
-  f = num.index(k)
-  print(r[f])
-main()
+        answer +=1
+        g = l[i][1]
+        s = l[i][2]
+        b = l[i][3]
+        answer_list.append((l[i][0],answer))
+for i in answer_list:
+    if i[0] == K:
+        print(i[1])
+        exit()
