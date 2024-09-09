@@ -1,6 +1,6 @@
 # [level 1] 조건에 부합하는 중고거래 댓글 조회하기 - 164673 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/164673#qna) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/164673) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@ Empty
 
 ### 제출 일자
 
-2024년 03월 18일 14:26:46
+2024년 09월 09일 22:56:11
 
 ### 문제 설명
 
