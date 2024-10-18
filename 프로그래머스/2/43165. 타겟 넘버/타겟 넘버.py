@@ -3,9 +3,9 @@ def solution(numbers, target):
     result = [0]
     for i in numbers:
         tmp = []
-        for j in result:
-            tmp.append(j+i)
-            tmp.append(j-i)
+        for r in result:
+            tmp.append(r+i)
+            tmp.append(r-i)
         result = tmp
     answer = result.count(target)
     return answer
