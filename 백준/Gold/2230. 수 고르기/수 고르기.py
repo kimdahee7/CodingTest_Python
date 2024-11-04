@@ -5,8 +5,8 @@ A.sort()
 start = 0
 end = 0
 answer = A[-1] - A[0]
-while 0<=start< N and 0<=end<N:
-    result = abs(A[end] - A[start])
+while start<=end<N:
+    result = A[end] - A[start]
     if result >= M:
         answer = min(answer,result)
         start +=1
