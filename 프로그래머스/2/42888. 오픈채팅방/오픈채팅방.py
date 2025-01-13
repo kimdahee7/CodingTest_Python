@@ -5,12 +5,8 @@ def solution(record):
     for r in record:
         if r[0] == "E":
             a,b,c = r.split()
-            if b not in dic:
-                dic[b] = c
-                result.append([b,"님이 들어왔습니다."])
-            else:
-                dic[b] = c
-                result.append([b,"님이 들어왔습니다."])
+            dic[b] = c
+            result.append([b,"님이 들어왔습니다."])
         elif r[0] == "L":
             a,b = r.split()
             result.append([b,"님이 나갔습니다."])
