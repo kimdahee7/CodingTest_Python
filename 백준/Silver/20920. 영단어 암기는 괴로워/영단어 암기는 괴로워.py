@@ -1,21 +1,15 @@
-import sys
-input = sys.stdin.readline
-def main(): 
-  l = []
-  dic = {}
-  N, M = map(int,input().split())
-  for _ in range(N):
-    word = input().strip()
-    if len(word) >= M:
-      l.append(word)
-  l.sort()
-  l.sort(key=len,reverse=True)
-  for i in l:
-    if i in dic:
-      dic[i] +=1
-    else:
-      dic[i] = 1
-  dic = dict(sorted(dic.items(), key=lambda x: x[1], reverse=True))
-  for y in dic.keys():
-    print(y)
-main()
+N,M = map(int,input().split())
+word_list = [input() for _ in range(N)]
+word_list.sort()
+word_list.sort(key=len,reverse=True)
+memorize_list = {}
+for w in word_list:
+    if len(w) >= M:
+        if w not in memorize_list:
+            memorize_list[w] =1
+        else:
+            memorize_list[w] += 1
+memorize_list = sorted(memorize_list, key=lambda x:-memorize_list[x])
+
+for m in memorize_list:
+    print(m)
