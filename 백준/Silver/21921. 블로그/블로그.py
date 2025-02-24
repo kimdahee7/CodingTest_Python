@@ -1,20 +1,20 @@
-import sys
-input = sys.stdin.readline
-def main(): 
-  r = []
-  N,X = map(int,input().split())
-  l = list(map(int,input().split()))
-  n = len(l)
-  window = sum(l[:X])
-  r.append(window)
-  result = window
-  for i in range(X,n):
-    window +=l[i] - l[i-X]
-    r.append(window)
-    result = max(result,window)
-  if result == 0:
+N,X = map(int,input().split())
+visitor = list(map(int,input().split()))
+window = sum(visitor[0:X])
+answer = window
+dic = {}
+dic[answer] = 1
+for i in range(X,N):
+    window = window + visitor[i] - visitor[i-X]
+    if window >= answer:
+        answer = window
+        if answer not in dic:
+            dic[answer] = 1
+        else:
+            dic[answer] += 1
+
+if answer == 0:
     print("SAD")
-  else:
-    print(result)
-    print(r.count(result))
-main()
+else:
+    print(answer)
+    print(dic[answer])
