@@ -1,10 +1,12 @@
 N = int(input())
-dist = list(map(int,input().split()))
-price = list(map(int,input().split()))
-answer = dist[0] * price[0]
-for i in range(2,N):
-    if price[i-1] > price[i-2]:
-        answer += dist[i-1] * price[i-2]
-    else:
-        answer += dist[i-1] * price[i-1]
-print(answer)
+c = list(map(int,input().split()))
+l = list(map(int,input().split()))        
+total = c[0] * l[0]
+stack = [l[0]]
+for i in range(1,len(l)-1):
+  if l[i] <= stack[-1]:
+    total += (l[i] * c[i])
+    stack.append(l[i])
+  else:
+    total += (stack[-1] * c[i])
+print(total)
