@@ -1,28 +1,32 @@
-N = int(input())
-N_list = list(map(int,input().split()))
-M = int(input())
+import sys
+input = sys.stdin.readline
+def main():
+  N = int(input())
+  l = list(map(int,input().split()))
+  l.sort()
+  max_data = max(l)
+  M = int(input())
+  if sum(l) <= M:
+    print(max_data)
+  else:
+    print(binary(l,max_data,M))
 
-N_list.sort()
-start = 0
-end = N_list[-1]
-result = 0
-answer = 0
-while start <= end:
-    mid = (start + end) // 2
+def binary(l,max_data,M):
+  start = 0
+  end = max_data
+  r= 0
+  while start <= end:
     total = 0
-    for i in N_list:
-        if i <= mid:
-            total += i
-        else:
-            total += mid
-    if total > M:
-        end -=1
-    elif total < M:
-        if result < total:
-            result = total
-            answer = mid
-        start +=1
+    mid = (start+end) //2 
+    for i in l:
+      if i <=mid:
+        total += i
+      else:
+        total +=mid
+    if total <= M:
+      start = mid+1
+      r = mid
     else:
-        print(mid)
-        exit()
-print(answer)
+      end = mid-1
+  return r
+main()
