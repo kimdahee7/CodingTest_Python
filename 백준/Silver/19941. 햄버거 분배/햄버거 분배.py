@@ -1,34 +1,21 @@
 N,K = map(int,input().split())
 l = list(input())
-total = 0
+start = 0
+end = 0
+answer = 0
 for i in range(N):
-  if l[i] == "P":
-    c = 0
-    if 0>i-K:
-      for j in range(0,i):
-        if l[j] == "H":
-          total+=1
-          c+=1
-          l[j] = "X"
-          break
-    elif 0<=i-K:
-      for j in range(i-K,i):
-        if l[j] == "H":
-          total+=1
-          c+=1
-          l[j] = "X"
-          break
-    if i+K<N and c == 0:
-      for j in range(i+1,i+K+1):
-        if l[j] == "H":
-          total +=1
-          l[j] = "X"
-          break
-    if i+K>=N and c == 0:
-      for j in range(i+1,N):
-        if l[j] == "H":
-          total +=1
-          l[j] = "X"
-          break
-
-print(total)
+    if l[i] == "P":
+        if i-K <=0:
+            start = 0
+        else:
+            start = i-K
+        if i+K >= N-1:
+            end = N
+        else:
+            end = i+K+1
+        for j in range(start,end):
+            if l[j] == "H":
+                l[j] = "D"
+                answer +=1
+                break
+print(answer)
