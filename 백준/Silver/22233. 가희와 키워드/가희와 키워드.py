@@ -1,16 +1,17 @@
 import sys
-N,M = map(int,sys.stdin.readline().split())
-keyword = {}
+input = sys.stdin.readline
 
+N,M = map(int,input().split())
+keyword = {}
 for i in range(N):
-    word = sys.stdin.readline().rstrip()
-    if word not in keyword:
-        keyword[word] = 1
+  word = input().strip()
+  keyword[word] = 1
+blog = []
 answer = N
 for _ in range(M):
-    l = list(sys.stdin.readline().rstrip().split(","))
-    for i in l:
-        if i in keyword and keyword[i] == 1:
-            keyword[i] -=1
-            answer -=1
-    print(answer)
+  blog = list(map(str,input().strip().split(",")))
+  for b in blog:
+    if b in keyword and keyword[b] != 0:
+      keyword[b] -=1
+      answer -=1
+  print(answer)
