@@ -1,9 +1,9 @@
 def solution(nums):
     answer = 0
-    n = len(nums)//2
-    l = set(nums)
-    if len(l) >= n:
-        answer = n
+    cnt = len(nums)//2
+    kind = set(nums)
+    if cnt <= len(kind):
+        answer = cnt
     else:
-        answer = len(l)
+        answer = len(kind)
     return answer
